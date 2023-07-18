@@ -1,0 +1,17 @@
+task:
+    name: buildbot
+    timeout_in: 7h
+    container:
+      image: nafedi/aosp:env
+      cpu: 6
+      memory: 24G
+      volumes:
+          - /home/cirrus/roms:/home/cirrus/roms
+          - /home/cirrus/ccache:/home/cirrus/ccache
+          - /home/cirrus/.config:/home/cirrus/.config
+    run_script:
+      - git clone --depth=1 https://gitlab.com/ElectroPerf/atom-x-clang.git ~/clang
+      - export PATH="$PATH:$HOME/clang/bin"
+      - git clone --depth=1 https://github.com/aospa-gauguin/kernel_xiaomi_gauguin.git ~/kernel
+      - cd ~/kernel
+      - curl https://gist.githubusercontent.com/DevAdalat/acc5babe30199c2e71aa3500efd14ef7/raw/b49e8c6a86e837b19f67f138483e48f1dc493e14/build.sh | bash
