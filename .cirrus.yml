@@ -2,11 +2,9 @@ task:
   name: "Build Kernel"
   timeout_in: 60m
   container:
-      image: ghcr.io/sushrut1101/docker:arch
+      image: nafedi/aosp:env
       cpu: 6
       memory: 24G
-
-
 
   Storage-Checker_script:
       - df -h
