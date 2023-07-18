@@ -1,6 +1,6 @@
 task:
-    name: buildbot
-    timeout_in: 7h
+    name: Kernel Build
+    timeout_in: 1h
     container:
       image: nafedi/aosp:env
       cpu: 6
